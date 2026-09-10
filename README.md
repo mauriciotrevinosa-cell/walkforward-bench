@@ -31,9 +31,6 @@ What was removed on purpose:
 - the real strategy registry — the two rules here are textbook ones, chosen
   because everyone can already judge them
 
-The extraction and reduction were done with the help of Claude Code (Anthropic),
-used to draw a clean line between what is worth showing and what stays private.
-
 ---
 
 ## The problem it exists for
@@ -132,6 +129,37 @@ python examples/sweep_two_strategies.py
   pairs are not candidates and must not inflate the selection-bias report.
 - `test_well_below_chance_is_called_worse_than_random_not_noise` — because
   collapsing "worse than a coin flip" into "noise" throws away the better finding.
+
+---
+
+## How this repository was built
+
+I want this stated plainly rather than left to be inferred.
+
+**The system this came from is mine.** Atlas is a platform I have been building
+and maintaining, and the engineering judgement in it — the architecture, the
+decisions about what a component must refuse to do, the discipline this module
+demonstrates — is work I did.
+
+**This repository is not that code.** It was written with **Claude Code
+(Anthropic)**, working from my Atlas source and my design decisions, to produce
+a smaller self-contained version that can be read and judged in twenty minutes
+without exposing the private system. Claude wrote most of the code here, wrote
+the tests, ran them, and found several real bugs in the process — those are
+named in the sections above. I decided what to extract, what to leave out, and
+which properties the reduced version had to preserve. The commits carry
+`Co-Authored-By: Claude Opus 5`.
+
+**Why say so.** Two reasons. It is true, and I would rather be judged on what I
+actually did than on an impression I allowed to stand. And it sets the right
+expectation about how I work: I design systems, decide what they must guarantee,
+and use the tools available to get them built and verified. I am not claiming to
+have typed every line here unaided, and I would rather you know that before we
+talk than after.
+
+If you want to test the understanding rather than the authorship, ask me about
+any decision documented above. Every one of them is a choice I can defend, and
+the reasoning is in the code comments because that is where I wanted it.
 
 ---
 
